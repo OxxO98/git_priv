@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="query">
+    <select id="getTravelInfo" resultType="com.example.git_priv.TravelInfo_DTO">
+        select * from travel_info where info_no = #{id}
+    </select>
+
+    <update id="addInfoTranslate" parameterType="java.util.HashMap">
+        update travel_info
+        set info_year_ko = #{year_ko}
+            info_region_ko = #{region_ko}
+            info_title_ko = #{title_ko}
+            info_content_ko = #{content_ko}
+    </update>
+</mapper>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVITIME Spot API Demo</title>
+    <style>
+        body { font-family: sans-serif; padding: 2em; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; }
+        input{ width: 300px; padding: 8px; margin-bottom: 10px; }
+        button {padding: 10px 15px; }
+        .row { display: flex; gap: 20px;}
+        #spotListArea {
+            flex: 1;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            overflow-y: auto;
+            max-height: 500px;
+        }
+        .spot-item { border-bottom: 1px solid #eee; }
+        .spot-item:last-child { border-bottom: none; }
+        .spot-name { font-size: 1.0em; color: #333; }
+        .spot-address { font-size: 0.8em; color: #666; margin-top: 5px; }
+        .spot-phone { font-size: 0.6em; color: #666; margin-top: 5px; }
+        #map-container {flex: 1; height: 500px; }
+    </style>
+</head>
+<body>
+<h1>NAVITIME Spot API Demo</h1>
+<h2>スポット検索</h2>
+<div class="input-group">
+    <input type="text" id="keywordInput" placeholder="例: カフェ">
+    <button id="searchButton">検索</button>
+</div>
+<div class="row">
+    <div id="spotListArea">
+        <p>ここに検索結果のリストが表示されます。</p>
+    </div>
+    <div id="map-container"></div>
+</div>
+<script src="sample.js"></script>
+</body>
+</html>
