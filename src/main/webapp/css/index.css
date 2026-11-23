@@ -1,0 +1,623 @@
+/* =========================
+   1. 기본 설정
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #79bd98;
+    --color-primary-hover: #5fa77f;
+    --color-primary-light: #253d30;
+
+    --color-background: #181c1a;
+    --color-surface: #222825;
+    --color-border: #39443d;
+
+    --color-text: #e5ebe6;
+    --color-muted: #9ba99f;
+    --color-danger: #e47777;
+
+    --radius: 10px;
+    --shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    margin: 0 auto;
+    padding: 0 30px;
+    width: 100%;
+
+    color: var(--color-text);
+    background: var(--color-background);
+
+    font-family: Arial, "Noto Sans KR", sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    line-height: 1.4;
+    color: var(--color-text);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   2. 버튼 공통
+========================= */
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    min-height: 40px;
+    padding: 9px 16px;
+
+    color: #17231b;
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius);
+
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background 0.2s,
+    border-color 0.2s,
+    transform 0.15s,
+    box-shadow 0.2s;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active {
+    transform: translateY(1px);
+}
+
+button:focus-visible,
+input[type="button"]:focus-visible,
+input[type="submit"]:focus-visible,
+input[type="reset"]:focus-visible {
+    outline: 3px solid rgba(121, 189, 152, 0.3);
+    outline-offset: 2px;
+}
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* 파일 업로드 input */
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+
+    color: var(--color-muted);
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: border-color 0.2s, background 0.2s;
+}
+
+/* 파일 선택 버튼 */
+input[type="file"]::file-selector-button {
+    margin-right: 15px;
+    padding: 9px 16px;
+
+    color: #18231c;
+    background: var(--color-primary);
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+
+/* 파일 선택 버튼 hover */
+input[type="file"]::file-selector-button:hover {
+    background: var(--color-primary-hover);
+}
+
+/* 전체 input hover */
+input[type="file"]:hover {
+    border-color: var(--color-primary);
+}
+
+/* focus */
+input[type="file"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(121, 189, 152, 0.15);
+}
+
+/* 버튼 종류별 클래스 */
+
+.btn-secondary {
+    color: var(--color-text);
+    background: #303934;
+    border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+    color: white;
+    background: #3b4740;
+    border-color: #53645a;
+}
+
+.btn-danger {
+    color: white;
+    background: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.btn-danger:hover {
+    background: #c65d5d;
+    border-color: #c65d5d;
+}
+
+.btn-outline {
+    color: var(--color-primary);
+    background: transparent;
+    border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+    color: #17231b;
+}
+
+.btn-small {
+    min-height: 32px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.btn-large {
+    min-height: 48px;
+    padding: 12px 22px;
+    font-size: 16px;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+
+/* =========================
+   3. 입력 요소 공통
+========================= */
+
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="file"]),
+select,
+textarea {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    padding: 10px 12px;
+
+    color: var(--color-text);
+    background: #191f1b;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+
+    font: inherit;
+    font-size: 14px;
+
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(121, 189, 152, 0.12);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #78867d;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+    color: #778078;
+    background: #292f2b;
+    cursor: not-allowed;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+
+/* =========================
+   4. 폼 공통
+========================= */
+
+form {
+    margin: 0;
+}
+
+form label {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+form input,
+form select,
+form textarea {
+    margin-bottom: 12px;
+}
+
+form br {
+    display: block;
+    content: "";
+    margin-bottom: 4px;
+}
+
+form > input:read-only {
+    background: var(--color-surface) !important;
+}
+
+/* 폼 카드 */
+
+.form-card {
+    width: 100%;
+    max-width: 480px;
+    padding: 24px;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+/* 폼 필드 */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    margin-bottom: 0;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.form-actions > * {
+    flex: 1;
+}
+
+
+/* =========================
+   5. 페이지 레이아웃
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.content {
+    padding: 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.page-title {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.section-title {
+    margin: 24px 0 12px;
+    font-size: 18px;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.toolbar > * {
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   6. 테이블 공통
+========================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 14px;
+}
+
+th,
+td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+th {
+    color: #b6d8c2;
+    background: #2b3830;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+tbody tr {
+    background: var(--color-surface);
+    transition: background 0.2s;
+}
+
+tbody tr:hover {
+    background: #2d3831;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+}
+
+
+/* =========================
+   7. 상태 메시지
+========================= */
+
+.message {
+    padding: 12px 16px;
+    margin: 12px 0;
+
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+
+    font-size: 14px;
+}
+
+.message-success {
+    color: #a5d9b6;
+    background: #20372a;
+    border-color: #365d43;
+}
+
+.message-error {
+    color: #f0aaaa;
+    background: #3b2525;
+    border-color: #684040;
+}
+
+.message-info {
+    color: #a9d0e9;
+    background: #233441;
+    border-color: #38566c;
+}
+
+
+/* =========================
+   8. 보조 유틸리티
+========================= */
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-muted {
+    color: var(--color-muted);
+}
+
+.mt-1 {
+    margin-top: 8px;
+}
+
+.mt-2 {
+    margin-top: 16px;
+}
+
+.mt-3 {
+    margin-top: 24px;
+}
+
+.mb-1 {
+    margin-bottom: 8px;
+}
+
+.mb-2 {
+    margin-bottom: 16px;
+}
+
+.mb-3 {
+    margin-bottom: 24px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.gap-1 {
+    gap: 8px;
+}
+
+.gap-2 {
+    gap: 16px;
+}
+
+.w-full {
+    width: 100%;
+}
+
+
+/* =========================
+   9. 모바일 대응
+========================= */
+
+@media (max-width: 600px) {
+    body {
+        padding: 16px;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .content {
+        padding: 16px;
+    }
+
+    .form-card {
+        padding: 18px;
+    }
+
+    .page-title {
+        font-size: 22px;
+    }
+
+    .toolbar {
+        align-items: stretch;
+    }
+
+    .toolbar button,
+    .toolbar a {
+        flex: 1;
+    }
+
+    th,
+    td {
+        padding: 10px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+}
+
+/* 여기부터 직접 */
+
+.flex-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-wrap {
+    display: flex;
+    justify-content: space-between;
+    gap : 8px;
+}
+
+.btn-prev {
+    position: absolute;
+    z-index: 999;
+    left : -24px;
+    top : 50%;
+}
+.btn-next {
+    position: absolute;
+    z-index: 999;
+    right: -24px;
+    top : 50%;
+}
+
+.msg {
+    color : red;
+    font-size : 14px;
+}
+
+#confirm-form {
+    & > form {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap : 16px;
+
+        & > input {
+            margin : 0;
+        }
+
+        & > button {
+            flex : 0 0 auto;
+        }
+    }
+}

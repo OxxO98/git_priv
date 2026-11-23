@@ -1,0 +1,107 @@
+/* 페이지 제목 */
+.board-title {
+    margin-bottom: 20px;
+
+    color: var(--color-primary);
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.board-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin-bottom: 25px;
+}
+
+/* 상세페이지 전체 */
+.board-detail {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+
+    box-shadow: var(--shadow);
+}
+
+/* 각 항목 */
+.board-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-bottom: 22px;
+}
+
+.board-field:last-child {
+    margin-bottom: 0;
+}
+
+/* 항목 이름 */
+.board-field label {
+    color: var(--color-primary);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* 제목 및 날짜 */
+.board-input {
+    width: 100%;
+    padding: 12px 14px;
+
+    color: var(--color-text);
+    background: #191f1b;
+
+    border: 1px solid var(--color-border);
+    border-radius: 7px;
+
+    font-size: 15px;
+    outline: none;
+}
+
+/* 본문 */
+.board-textarea {
+    width: 100%;
+    min-height: 250px;
+    padding: 15px;
+
+    color: var(--color-text);
+    background: #191f1b;
+
+    border: 1px solid var(--color-border);
+    border-radius: 7px;
+
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.7;
+
+    resize: vertical;
+    outline: none;
+}
+
+/* 글자 수 */
+.board-count {
+    margin-top: -5px;
+
+    color: var(--color-muted);
+    font-size: 12px;
+    text-align: right;
+}
+
+/* 모바일 */
+@media (max-width: 600px) {
+    .board-title {
+        font-size: 22px;
+    }
+
+    .board-detail {
+        padding: 16px;
+    }
+
+    .board-textarea {
+        min-height: 200px;
+    }
+}

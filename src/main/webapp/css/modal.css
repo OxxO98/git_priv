@@ -1,0 +1,102 @@
+#modal {
+    width: 80%;
+    max-width: 1000px;
+    height: 80vh;
+    max-height: 850px;
+
+    padding: 0;
+    border: 1px solid #444;
+    border-radius: 12px;
+
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+/* 모달 중앙 정렬 */
+#modal[open] {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 모달 외부 배경 */
+#modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(3px);
+}
+
+/* 모달 헤더 */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px 24px;
+    background-color: #292929;
+    border-bottom: 1px solid #444;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+/* 닫기 버튼 */
+.modal-header button {
+    padding: 8px 16px;
+    border: 1px solid #555;
+    border-radius: 6px;
+
+    background-color: #3a3a3a;
+    color: #ffffff;
+
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.modal-header button:hover {
+    background-color: #555;
+}
+
+/* 모달 콘텐츠 */
+#modalContent {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+/* 스크롤바 */
+#modalContent::-webkit-scrollbar {
+    width: 8px;
+}
+
+#modalContent::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+#modalContent::-webkit-scrollbar-track {
+    background-color: #252525;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    #modal {
+        width: 95%;
+        height: 90vh;
+        max-height: none;
+    }
+
+    .modal-header {
+        padding: 12px 16px;
+    }
+
+    #modalContent {
+        padding: 16px;
+    }
+}
