@@ -30,14 +30,15 @@ public class RegionServlet extends HttpServlet {
 
         List<TravelInfo_DTO> region = ss.selectList("query.getRegion");
 
-        req.setCharacterEncoding("utf-8");
+        req.setCharacterEncoding("UTF-8");
+        res.setCharacterEncoding("UTF-8");
+
         Map<String, String> params = new HashMap<>();
         params.put("region", req.getParameter("sel_region"));
         List<TravelInfo_DTO> ret = ss.selectList("query.getRegionInfo", params);
 
-        System.out.println(ret);
-
         req.setAttribute("region", region);
+        System.out.println( req.getParameter("sel_region") );
         req.setAttribute("selected_region", req.getParameter("sel_region"));
         req.setAttribute("ret", ret);
 

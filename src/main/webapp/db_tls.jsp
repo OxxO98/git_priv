@@ -15,16 +15,22 @@
 <%--</form>--%>
 
 <%--<h1>no 검색 결과</h1>--%>
-<form action="api/translate" method="post">
-    <input name="no" value="${ret.info_no}"> <br>
-    <input name="year" value="${ret.info_year}"> <br>
-    <input name="title" value="${ret.info_title}"> <br>
-    <input name="region" value="${ret.info_region}"> <br>
-    <textarea name="content">${ret.info_content}</textarea> <br>
-    <button>번역</button>
-</form>
-
-<input value="${json}">
-<script src="js/translate"></script>
+<label for="no">no</label>
+<input name="no" value="${ret.info_no}"> <br>
+<label for="year">년도</label>
+<input name="year" value="${ret.info_year}"> <br>
+<label for="region">지역</label>
+<input name="region" value="${ret.info_region}"> <br>
+<label for="title">제목</label>
+<input name="title" value="${ret.info_title}"> <br>
+<textarea name="content">${ret.info_content}</textarea> <br>
+<h2>번역</h2>
+<label for="year_ko">년도</label>
+<input name="year_ko" value="${ret.info_year_ko}"> <br>
+<label for="region_ko">지역</label>
+<input name="region_ko" value="${ret.info_region_ko}"> <br>
+<label for="title_ko">제목</label>
+<input name="title_ko" value="${ret.info_title_ko}"> <br>
+<textarea name="content_ko">${ret.info_content_ko}</textarea> <br>
 </body>
 </html>

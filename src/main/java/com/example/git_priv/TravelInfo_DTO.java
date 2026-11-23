@@ -14,4 +14,8 @@ public class TravelInfo_DTO {
     private String info_assc;
     private String info_title;
     private String info_content;
+    private String info_year_ko;
+    private String info_region_ko;
+    private String info_title_ko;
+    private String info_content_ko;
 }

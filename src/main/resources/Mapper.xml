@@ -22,9 +22,7 @@
 
     <update id="addInfoTranslate" parameterType="java.util.HashMap">
         update travel_info
-        set info_year_ko = #{year_ko}
-            info_region_ko = #{region_ko}
-            info_title_ko = #{title_ko}
+        set info_title_ko = #{title_ko},
             info_content_ko = #{content_ko}
         where info_no = #{no}
     </update>

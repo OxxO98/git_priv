@@ -50,7 +50,7 @@ public class HelloServlet extends HttpServlet {
 //        params.put("id", "1");
 //        List<TravelInfo_DTO> dto = ss.selectList("query.getTravelInfo", params);
 
-//        System.out.println(dto.get(0).getInfo_region());
+//        .println(dto.get(0).getInfo_region());
 //        System.out.println(dto.get(0).getInfo_title());
 //        System.out.println(dto.get(0).getInfo_content());
     }
