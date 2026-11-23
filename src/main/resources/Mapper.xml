@@ -7,11 +7,25 @@
         select * from travel_info where info_no = #{id}
     </select>
 
+    <select id="getRegion" resultType="com.example.git_priv.TravelInfo_DTO">
+        select distinct info_region from travel_info where instr(info_region, '・') = 0
+    </select>
+
+    <select id="getTranslate" resultType="com.example.git_priv.TravelInfo_DTO">
+        select * from travel_info where info_no = #{no} and info_content_ko is not null
+    </select>
+
+
+    <select id="getRegionInfo" resultType="com.example.git_priv.TravelInfo_DTO">
+        select * from travel_info where info_region like '%'||#{region}||'%'
+    </select>
+
     <update id="addInfoTranslate" parameterType="java.util.HashMap">
         update travel_info
         set info_year_ko = #{year_ko}
             info_region_ko = #{region_ko}
             info_title_ko = #{title_ko}
             info_content_ko = #{content_ko}
+        where info_no = #{no}
     </update>
 </mapper>

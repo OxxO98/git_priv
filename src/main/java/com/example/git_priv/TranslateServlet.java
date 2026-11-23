@@ -36,6 +36,7 @@ public class TranslateServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 //        res.setContentType("application/json;charset=UTF-8");
 
+        String no = req.getParameter("no");
         String year = req.getParameter("year");
         String region = req.getParameter("region");
         String content = req.getParameter("content");
@@ -46,11 +47,19 @@ public class TranslateServlet extends HttpServlet {
         }
 
         try {
+            SqlSession ss = MyBatis.connect();
+
+            Map<String, String> isParams = new HashMap();
+            List<TravelInfo_DTO> isList =  ss.selectList("query.getTranslate", isParams);
+            if( isList.size() > 0 ) {
+                req.setAttribute("msg", "error : 이미 번역이 존재합니다.");
+                return;
+            }
+
+
             String prompt =
                     "Translate the following Japanese text into natural Korean. "
                             + "Preserve the original meaning and do not add explanations.\n\n"
-                            + year + "\n"
-                            + region + "\n"
                             + content;
             // 구조화된 응답 받기 고민 필요
 
@@ -93,16 +102,6 @@ public class TranslateServlet extends HttpServlet {
                 }
             }
 
-            // update db
-            SqlSession ss = MyBatis.connect();
-
-//            Map<String, String> params = new HashMap<>();
-//            params.put("year_ko", "1");
-//            params.put("region_ko", "1");
-//            params.put("title_ko", "1");
-//            params.put("content_ko", "1");
-//            ss.update("query.addInfoTranslate", params);
-
             ObjectMapper mapper = new ObjectMapper();
             JsonNode json = mapper.readTree(result.toString());
             JsonNode outputs = json.get("output");
@@ -116,6 +115,15 @@ public class TranslateServlet extends HttpServlet {
                     break;
                 }
             }
+
+            // update db
+            Map<String, String> params = new HashMap<>();
+            params.put("no", no);
+//            params.put("year_ko", );
+//            params.put("region_ko", );
+//            params.put("title_ko", );
+//            params.put("content_ko", );
+            ss.update("query.addInfoTranslate", params);
 
             conn.disconnect();
 

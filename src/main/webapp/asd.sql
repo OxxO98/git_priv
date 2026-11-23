@@ -59,8 +59,12 @@ from travel_info
 where instr(info_region, '・') > 0
 order by info_region;
 
--- update TRAVEL_INFO
--- set info_region = trim(INFO_REGION)
+update TRAVEL_INFO
+set info_region = trim(INFO_REGION);
+
+update TRAVEL_INFO
+set info_region = '鹿児島県'
+where info_region = '鹿児島';
 
 select *
 from TRAVEL_INFO
