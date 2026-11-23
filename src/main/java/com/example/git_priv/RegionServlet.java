@@ -38,7 +38,6 @@ public class RegionServlet extends HttpServlet {
         List<TravelInfo_DTO> ret = ss.selectList("query.getRegionInfo", params);
 
         req.setAttribute("region", region);
-        System.out.println( req.getParameter("sel_region") );
         req.setAttribute("selected_region", req.getParameter("sel_region"));
         req.setAttribute("ret", ret);
 

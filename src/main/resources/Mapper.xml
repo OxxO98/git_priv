@@ -8,7 +8,7 @@
     </select>
 
     <select id="getRegion" resultType="com.example.git_priv.TravelInfo_DTO">
-        select distinct info_region from travel_info where instr(info_region, '・') = 0
+        select distinct info_region, info_region_ko from travel_info where instr(info_region, '・') = 0
     </select>
 
     <select id="getTranslate" resultType="com.example.git_priv.TravelInfo_DTO">

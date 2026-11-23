@@ -11,11 +11,11 @@
 <body>
 
 <form action="region" method="post">
-    <label for="sel_region">과일 선택:</label>
+    <label for="sel_region">지역 선택:</label>
     <select id="sel_region" name="sel_region">
         <option value="">-- 선택하세요 --</option>
         <c:forEach items="${region}" var="r">
-            <option value="${r.info_region}" ${selected_region eq r.info_region ? 'selected' : ''}>${r.info_region}</option>
+            <option value="${r.info_region}" ${selected_region eq r.info_region ? 'selected' : ''}>${r.info_region} | ${r.info_region_ko}</option>
         </c:forEach>
     </select>
     <button>조회</button>

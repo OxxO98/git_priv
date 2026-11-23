@@ -72,14 +72,26 @@ where info_region like '%茨城県%';
 -- 없는 현 : 茨城県, 愛媛県
 
 
-select *
+select count(*)
 from TRAVEL_INFO
-where info_no = 954;
+where info_no = 8775;
+-- 8775 만 121개 존재
+
+
+select count(*)
+from (select distinct info_no
+      from TRAVEL_INFO
+);
+
+-- 9418 - 9298, 121
 
 select info_no, info_title_ko, length( INFO_CONTENT_ko) as length, INFO_CONTENT_ko
 from TRAVEL_INFO
 where info_region_ko like '%오카야마%'
 order by length;
+
+
+
 
 -- 일본 현 이름 한국어로 변경
 update TRAVEL_INFO
@@ -91,3 +103,5 @@ select * from TRAVEL_INFO;
 update TRAVEL_INFO
 set INFO_YEAR_KO = '2024년'
 where info_year = '令和6年';
+
+
