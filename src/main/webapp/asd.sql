@@ -70,3 +70,14 @@ select *
 from TRAVEL_INFO
 where info_region like '%茨城県%';
 -- 없는 현 : 茨城県, 愛媛県
+
+-- 일본 현 이름 한국어로 변경
+update TRAVEL_INFO
+set INFO_REGION_KO = '홋카이도・아오모리・아키타'
+where info_region = '北海道・青森県・秋田県';
+
+select * from TRAVEL_INFO;
+-- 일본 연호 서력으로 변경
+update TRAVEL_INFO
+set INFO_YEAR_KO = '2024년'
+where info_year = '令和6年';
